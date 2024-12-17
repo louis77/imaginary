@@ -5,9 +5,13 @@ zerops:
       # what technologies should the build
       # container be based on (can be an array)
       base: go@1
+      prepareCommands:
+        - apt update
+        - apt install -y golang libvips-dev
 
       # build your application
       buildCommands:
+        - go get
         - go build -o app
 
       # select which files / folders to deploy
